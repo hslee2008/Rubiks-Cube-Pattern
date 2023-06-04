@@ -1,0 +1,22 @@
+.main-btn {
+  color: #5c62fe;
+  background: transparent;
+  border: 2px solid #5c62fe;
+  border-radius: 10px !important;
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.main-btn:hover,
+.main-btn:focus {
+  color: white;
+  background: #5c62fe;
+  transition-duration: 0.3s;
+  outline: none;
+}
+
+.table {
+  margin-top: 25px;
+  margin-bottom: 5px;
+}
