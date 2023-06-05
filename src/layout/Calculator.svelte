@@ -13,7 +13,6 @@
   let pattern = 'R R U U'
   let completeMove = ''
   let moveCount = 0
-  let cubeType = 3
   let speed = 1000
   let openedCalc = false
   let cubeMethod = {}
@@ -88,10 +87,6 @@
   <TextInput bind:value="{pattern}" labelText="패턴" />
 </div>
 
-<div class="mb20">
-  <TextInput bind:value="{cubeType}" labelText="큐브 종류" />
-</div>
-
 <Slider
   labelText="스피드"
   hideTextInput
@@ -112,7 +107,7 @@
 >
   <div id="modal-container">
     <DataTable bind:headers bind:rows class="mauto" />
-    <Rubiks bind:cubeMethod bind:cubeType bind:speed></Rubiks>
+    <Rubiks bind:cubeMethod bind:speed></Rubiks>
   </div>
 </Modal>
 {/if}

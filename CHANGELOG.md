@@ -13,3 +13,7 @@ Make Rubiks Modal with dark outline
 Zoom in/out feature
 Add Total Move Count & Expected Time
 Fix jquery.cube.threejs.min.js bugs
+
+# v0.0.4
+
+Remove Cube Type

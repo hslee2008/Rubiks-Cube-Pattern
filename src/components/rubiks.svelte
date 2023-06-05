@@ -6,7 +6,6 @@
     reset: () => {}
   }
 
-  export let cubeType = 1
   export let speed
   let myCube
 
@@ -19,7 +18,7 @@
           cubeMethod.execute = moves => {
             myCube = $$('.cube').cube({
               background: 0xf0f0f0,
-              type: cubeType,
+              type: 3,
               animation: {
                 delay: speed
               }
