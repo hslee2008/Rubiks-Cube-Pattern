@@ -8,6 +8,7 @@
   } from 'carbon-components-svelte'
   import Cube from 'rubiks-cube'
   import Rubiks from '../components/rubiks.svelte'
+  import humanizeDuration from 'humanize-duration'
 
   let pattern = 'R R U U'
   let completeMove = ''
@@ -15,16 +16,16 @@
   let cubeType = 3
   let speed = 1000
   let openedCalc = false
-  let cubeMethod
+  let cubeMethod = {}
 
   let headers = [
     {
-      key: 'move',
-      value: 'Move'
+      key: 'category',
+      value: 'Category'
     },
     {
-      key: 'count',
-      value: 'Count'
+      key: 'value',
+      value: 'Explanation'
     }
   ]
   let rows = []
@@ -32,8 +33,25 @@
   $: rows = [
     {
       id: 'move',
-      move: pattern,
-      count: moveCount
+      category: '패턴',
+      value: pattern
+    },
+    {
+      id: 'turns',
+      category: '반복 횟수',
+      value: moveCount
+    },
+    {
+      id: 'totalTurns',
+      category: '총 돌림 횟수',
+      value: moveCount * ((pattern.length - 1) / 2 + 1)
+    },
+    {
+      id: 'time',
+      category: '예상 시간',
+      value: humanizeDuration(
+        Math.ceil(moveCount * ((pattern.length - 1) / 2 + 1) * speed)
+      )
     }
   ]
 
@@ -58,7 +76,7 @@
   function calculate() {
     openedCalc = true
     moveCount = calculateMovesToFinishPattern(pattern)
-    setTimeout(() => cubeMethod.execute(completeMove), 100)
+    setTimeout(() => cubeMethod.execute(completeMove), 200)
   }
 </script>
 
@@ -79,7 +97,7 @@
   hideTextInput
   bind:value="{speed}"
   fullWidth
-  min="{1}"
+  min="{10}"
   max="{1000}"
 />
 
@@ -92,8 +110,10 @@
   selectorPrimaryFocus=".bx--modal-content"
   on:close="{() => cubeMethod.reset()}"
 >
-  <DataTable bind:headers bind:rows />
-  <Rubiks bind:cubeMethod bind:cubeType bind:speed></Rubiks>
+  <div id="modal-container">
+    <DataTable bind:headers bind:rows class="mauto" />
+    <Rubiks bind:cubeMethod bind:cubeType bind:speed></Rubiks>
+  </div>
 </Modal>
 {/if}
 

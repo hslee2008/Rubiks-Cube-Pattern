@@ -13,3 +13,13 @@ body {
   padding: calc(1rem + 2em);
   text-align: center;
 }
+
+#modal-container {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  #modal-container {
+    display: block;
+  }
+}

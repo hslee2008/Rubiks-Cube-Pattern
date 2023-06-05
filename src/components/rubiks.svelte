@@ -1,13 +1,14 @@
 <script>
   import { onMount } from 'svelte'
 
-  export const cubeMethod = {
+  export let cubeMethod = {
     execute: moves => {},
     reset: () => {}
   }
 
   export let cubeType = 1
   export let speed
+  let myCube
 
   onMount(() => {
     import('jquery').then($ => {
@@ -15,21 +16,15 @@
 
       import('./jquery.cube.threejs.min.js').then(() => {
         $$(function () {
-          let myCube
-
           cubeMethod.execute = moves => {
             myCube = $$('.cube').cube({
-              color: [
-                0xff0000, 0xff8000, 0xffff00, 0x555555, 0x0000ff, 0x00ff00,
-                0xffffff
-              ],
               background: 0xf0f0f0,
               type: cubeType,
               animation: {
-                duration: speed,
                 delay: speed
               }
             })
+
             myCube.execute(moves)
           }
           cubeMethod.reset = () => {
@@ -39,9 +34,23 @@
       })
     })
   })
+
+  function zoomIn() {
+    myCube.zoomIn()
+  }
+
+  function zoomOut() {
+    myCube.zoomOut()
+  }
 </script>
 
-<div class="cube"></div>
+<div>
+  <div class="toolbar">
+    <button class="toolbar-btn" on:click="{zoomIn}">+</button>
+    <button class="toolbar-btn" on:click="{zoomOut}">-</button>
+  </div>
+  <div class="cube"></div>
+</div>
 
 <style>
   .cube {
@@ -50,6 +59,7 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
+    overflow: auto;
   }
 
   @media (max-width: 768px) {
