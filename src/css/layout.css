@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 300px;
+  min-height: 100vh;
+}
+
+#app {
+  max-width: 1280px;
+  min-width: 280px;
+  margin: 0 auto;
+  padding: calc(1rem + 2em);
+  text-align: center;
+}
+
+#modal-container {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  #modal-container {
+    display: block;
+  }
+}
