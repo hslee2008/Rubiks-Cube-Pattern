@@ -33,23 +33,9 @@
       })
     })
   })
-
-  function zoomIn() {
-    myCube.zoomIn()
-  }
-
-  function zoomOut() {
-    myCube.zoomOut()
-  }
 </script>
 
-<div>
-  <div class="toolbar">
-    <button class="toolbar-btn" on:click="{zoomIn}">+</button>
-    <button class="toolbar-btn" on:click="{zoomOut}">-</button>
-  </div>
-  <div class="cube"></div>
-</div>
+<div class="cube"></div>
 
 <style>
   .cube {

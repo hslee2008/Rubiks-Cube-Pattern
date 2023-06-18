@@ -75,7 +75,12 @@
   function calculate() {
     openedCalc = true
     moveCount = calculateMovesToFinishPattern(pattern)
-    setTimeout(() => cubeMethod.execute(completeMove), 200)
+
+    try {
+      setTimeout(() => cubeMethod.execute(completeMove), 200)
+    } catch {
+      setTimeout(() => cubeMethod.execute(completeMove), 500)
+    }
   }
 </script>
 

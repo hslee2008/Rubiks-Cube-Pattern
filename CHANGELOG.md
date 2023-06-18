@@ -17,3 +17,8 @@ Fix jquery.cube.threejs.min.js bugs
 # v0.0.4
 
 Remove Cube Type
+
+# v0.0.5
+
+Simplify
+Handle `execute()` timing error
