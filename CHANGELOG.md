@@ -22,7 +22,3 @@ Remove Cube Type
 
 Simplify
 Handle `execute()` timing error
-Accurate Time Calculation
-Organize Code
-Create close button
-Add description & link to notation explanation

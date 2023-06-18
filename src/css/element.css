@@ -13,14 +13,10 @@ h1 {
   h1 {
     font-size: 2rem;
   }
-
-  p {
-    font-size: 1rem;
-  }
 }
 
 @media (max-width: 360px) {
-  p {
-    font-size: 0.75rem;
+  h1 {
+    font-size: 1.75rem;
   }
 }

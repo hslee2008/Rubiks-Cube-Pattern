@@ -4,8 +4,7 @@
     Modal,
     ModalBody,
     DataTable,
-    Slider,
-    OutboundLink
+    Slider
   } from 'carbon-components-svelte'
   import Cube from 'rubiks-cube'
   import Rubiks from '../components/rubiks.svelte'
@@ -83,28 +82,21 @@
       setTimeout(() => cubeMethod.execute(completeMove), 500)
     }
   }
-
-  function close() {
-    openedCalc = false
-  }
 </script>
 
-<div class="mb50">
-  <h1 style="margin-bottom: 5px">패턴 반복 계산기</h1>
-  <p class="mb10">패턴의 최소 반복 횟수 계산 프로그램</p>
-  <OutboundLink href="https://jperm.net/3x3/moves">
-    루빅스 큐브 표기법
-  </OutboundLink>
+<div class="mb20">
+  <h1>반복 횟수 계산기</h1>
 </div>
 
 <div class="mb20">
-  <TextInput bind:value="{pattern}" labelText="루빅스 큐브 패턴 (표기법)" />
+  <TextInput bind:value="{pattern}" labelText="패턴" />
 </div>
 
 <Slider
   labelText="스피드"
   hideTextInput
   bind:value="{speed}"
+  fullWidth
   min="{10}"
   max="{1000}"
 />
@@ -119,12 +111,10 @@
   on:close="{() => cubeMethod.reset()}"
 >
   <div id="modal-container">
-    <DataTable bind:headers bind:rows />
+    <DataTable bind:headers bind:rows class="mauto" />
     <Rubiks bind:cubeMethod bind:speed></Rubiks>
   </div>
-
-  <button class="main-btn mt20" on:click="{close}">닫기</button>
 </Modal>
 {/if}
 
-<button class="main-btn mt20" on:click="{calculate}">계산하기</button>
+<button class="main-btn" on:click="{calculate}">계산하기</button>
