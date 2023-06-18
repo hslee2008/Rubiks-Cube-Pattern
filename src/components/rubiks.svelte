@@ -13,7 +13,7 @@
     import('jquery').then($ => {
       const $$ = $.default
 
-      import('./jquery.cube.threejs.min.js').then(() => {
+      import('../scripts/jquery.cube.threejs.min.js').then(() => {
         $$(function () {
           cubeMethod.execute = moves => {
             myCube = $$('.cube').cube({
