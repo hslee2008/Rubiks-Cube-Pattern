@@ -2,7 +2,6 @@
   import {
     TextInput,
     Modal,
-    ModalBody,
     DataTable,
     Slider,
     OutboundLink
@@ -10,6 +9,8 @@
   import Cube from 'rubiks-cube'
   import Rubiks from '../components/rubiks.svelte'
   import humanizeDuration from 'humanize-duration'
+
+  let initialPageVisit = true
 
   let pattern = 'R R U U'
   let completeMove = ''
@@ -74,6 +75,9 @@
   }
 
   function calculate() {
+    if (initialPageVisit) {
+      cubeMethod = new Cube()
+    }
     openedCalc = true
     moveCount = calculateMovesToFinishPattern(pattern)
 
@@ -82,6 +86,8 @@
     } catch {
       setTimeout(() => cubeMethod.execute(completeMove), 500)
     }
+
+    initialPageVisit = false
   }
 
   function close() {
