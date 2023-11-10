@@ -45,10 +45,19 @@ def cube_repeat(notation):
   return count
 
 list = []
+max = 0
+maxMove = []
 
 for notation_list in tqdm(allPossibleNotation):
-  list.append(cube_repeat(' '.join(notation_list)))
+  takenMoves = (cube_repeat(' '.join(notation_list)))
+  
+  if takenMoves > max:
+    max = takenMoves
+    maxMove = notation_list
+    
+  list.append(takenMoves)
 
 print("평균", statistics.mean(list))
 print("중앙값", statistics.median(list))
 print("최빈값", statistics.mode(list))  
+print("최대값", max, maxMove)
